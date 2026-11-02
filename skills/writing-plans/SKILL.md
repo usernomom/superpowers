@@ -121,8 +121,8 @@ Expected: FAIL with "function not defined"
 - [ ] **Step 3: Implement `function(input: InputType) -> ResultType` in `exact/path/to/file.py`**
 
 One line on the approach when the signature and the test leave a choice
-(which library call, which data structure); a code block only for an
-algorithm they do not determine.
+(which library call, which data structure). Never the body: the plan
+carries no implementation.
 
 - [ ] **Step 4: Run test to verify it passes**
 
@@ -147,8 +147,11 @@ of step carries what makes it unambiguous and nothing more:
   spec's exact values in them.
 - **A code step:** the exact signature (name, parameters, return type), the
   file it lives in, and the specific values the spec pins. The implementer
-  writes the body. A body appears only for an algorithm the signature and
-  tests do not determine, or for exact copy the spec fixes.
+  writes the body. A plan NEVER contains an implementation: no function or
+  script body, no whole file, no code block beyond a test with its
+  assertions, a signature, a type, an interface shape, a command line or an
+  exact string the spec fixes. An algorithm the signature and tests do not
+  determine is described in prose, one line per decision, never as code.
 - **A verification step:** the command to run and the output that means it
   passed.
 - **A reference to another task:** that task's Interfaces block says what
@@ -166,7 +169,7 @@ After writing the complete plan, look at the spec with fresh eyes and check the 
 
 **1. Spec coverage:** Skim each section/requirement in the spec. Can you point to a task that implements it? List any gaps.
 
-**2. Step scan:** Every step must let the implementer write exactly one reasonable thing, and no step may carry more than that: a line that decides nothing is a gap, a function body the signature and tests already determine is a transcript. Fix both.
+**2. Step scan:** Every step must let the implementer write exactly one reasonable thing, and no step may carry more than that: a line that decides nothing is a gap, any body other than a test's is a transcript. Fix both.
 
 **3. Type consistency:** Do the types, method signatures, and property names you used in later tasks match what you defined in earlier tasks? A function called `clearLayers()` in Task 3 but `clearFullLayers()` in Task 7 is a bug.
 
